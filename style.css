@@ -1,0 +1,136 @@
+:root {
+    --gold: #C5A059;
+    --black: #1a1a1a;
+    --white: #ffffff;
+    --gray: #f9f9f9;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: var(--sans);
+    line-height: 1.6;
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+.section { padding: 100px 0; }
+.bg-light { background: var(--gray); }
+
+.section-title {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Navbar */
+#navbar {
+    position: fixed;
+    top: 0; width: 100%;
+    padding: 25px 0;
+    transition: 0.4s ease;
+    z-index: 1000;
+}
+
+#navbar.scrolled {
+    background: var(--white);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    width: 90%; margin: 0 auto;
+    display: flex; justify-content: space-between; align-items: center;
+}
+
+.logo {
+    font-family: var(--serif);
+    font-weight: 700; font-size: 1.4rem;
+    color: var(--black); text-decoration: none; letter-spacing: 3px;
+}
+
+.nav-links { display: flex; list-style: none; }
+.nav-links li { margin-left: 30px; }
+.nav-links a {
+    text-decoration: none; color: var(--black);
+    font-size: 0.9rem; text-transform: uppercase;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+/* Hero Slider */
+.hero {
+    height: 100vh; position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover; background-position: center;
+    opacity: 0; transition: opacity 1.5s ease-in-out;
+}
+
+.slide.active { opacity: 1; transform: scale(1.05); transition: opacity 1.5s, transform 10s linear; }
+
+.hero-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center;
+}
+
+.hero-content { text-align: center; color: var(--white); }
+.hero-content h1 { font-family: var(--serif); font-size: 5rem; margin-bottom: 10px; }
+.hero-content p { font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 30px; }
+
+.btn-gold {
+    padding: 15px 35px; background: var(--gold); color: white;
+    text-decoration: none; text-transform: uppercase; letter-spacing: 2px;
+    font-size: 0.8rem; transition: 0.3s; border: none; cursor: pointer;
+}
+.btn-gold:hover { background: var(--black); }
+
+/* About & Grid */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-img img { width: 100%; filter: grayscale(100%); transition: 0.5s; }
+.about-img img:hover { filter: grayscale(0%); }
+
+.read-more { color: var(--gold); text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px; }
+
+/* Skills */
+.skills-container { max-width: 800px; margin: 0 auto; }
+.skill-card { margin-bottom: 30px; }
+.skill-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: 600; }
+.progress-bar { height: 2px; background: #ddd; width: 100%; }
+.progress { height: 100%; background: var(--gold); width: 0; transition: 2s ease; }
+
+/* Portfolio Gallery */
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.portfolio-item { position: relative; overflow: hidden; height: 500px; cursor: pointer; }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.portfolio-hover {
+    position: absolute; bottom: -100%; left: 0; width: 100%; padding: 30px;
+    background: rgba(255,255,255,0.9); transition: 0.4s;
+}
+.portfolio-item:hover .portfolio-hover { bottom: 0; }
+.portfolio-item:hover img { transform: scale(1.1); }
+
+/* Contact */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; }
+.contact-form input, .contact-form textarea {
+    width: 100%; padding: 15px; margin-bottom: 20px; border: 1px solid #ddd; outline: none;
+}
+.contact-form input:focus { border-color: var(--gold); }
+
+.footer { padding: 40px 0; text-align: center; border-top: 1px solid #eee; font-size: 0.8rem; color: #888; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-grid, .contact-grid, .portfolio-grid { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 3rem; }
+    .nav-links { display: none; }
+}
+
